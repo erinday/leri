@@ -7,4 +7,4 @@ mixin connect-style (pageName)
       return currentPage.view
     }
 
-  link(rel="stylesheet", href=`${pathStatics}/styles/${connectStyle(pageName)}${PRODUCTION ? `-${HASH}` : ''}.css`)
+  link(rel="stylesheet", href=`${pathStatics}/css/${connectStyle(pageName)}${PRODUCTION ? `-${HASH}` : ''}.css`)
