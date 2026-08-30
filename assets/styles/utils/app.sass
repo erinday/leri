@@ -1,0 +1,43 @@
+@charset "UTF-8"
+
+@use "../v"
+
+*
+  margin: 0
+  outline: none
+  box-sizing: border-box
+  padding: 0
+  //font-family: 'Inter Variable', sans-serif
+  &::before, &::after
+    box-sizing: border-box
+
+html
+  scroll-behavior: smooth
+  height: 100%
+
+body
+  display: flex
+  flex-direction: column
+  height: 100%
+  min-width: 360px
+  //background-color: v.c('#1F1F1F')
+  //color: v.c('#FFFFFF')
+
+picture
+  display: block
+
+img
+  display: block
+  width: 100%
+  height: auto
+  min-height: 1px
+
+li
+  list-style-type: none
+
+a
+  color: inherit
+
+button
+  user-select: none
+  cursor: pointer

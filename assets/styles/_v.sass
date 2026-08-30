@@ -1,7 +1,6 @@
-$white: #fff
-$black: #000
+@forward './utils/colors'
 
-// 1200, 1000, 700, 520
+// bp 1240, 950, 700, 520
 @mixin media($bp-size)
   @media (max-width: $bp-size + px)
     @content
@@ -11,7 +10,7 @@ $black: #000
     @content
 
 @mixin hover
-  @include media_min(1000)
+  @include media_min(1240)
     @content
 
 $imgPath: '../img/'
@@ -24,3 +23,12 @@ $imgPath: '../img/'
   background-size: $w $h
   background-repeat: no-repeat
   background-position: center center
+
+@mixin maskImg($img)
+  mask-image: url($imgPath + $img)
+
+@mixin maskIcon($img, $w: 100%, $h: 100%)
+  mask-image: url($imgPath + $img)
+  mask-size: $w $h
+  mask-repeat: no-repeat
+  mask-position: center center

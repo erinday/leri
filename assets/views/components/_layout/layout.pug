@@ -17,7 +17,7 @@ html(lang='ru' prefix="og: https://ogp.me/ns#")
     //  +header
     main.wrapper
       block body
-    //include footer
+    include footer
     //include scripts
     each style in prefetchStyle()
       link(rel="prefetch", href=`${pathStatics}/css/${style}.css`, as="style")

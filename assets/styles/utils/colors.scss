@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:color';
+
+$colors: (
+  '#000000': #000,
+);
+
+@function c ($value: color, $opacify: 1)  {
+  $color: map.get($colors, string.to-upper-case(string.quote("#{$value}")));
+  @if (not $color) {
+    @error "Unknown color «#{$value}»";
+  } @else if($opacify != 1) {
+    @return color.change($color, $alpha: $opacify);
+  }
+  @return $color;
+}

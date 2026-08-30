@@ -1,5 +1,5 @@
 -
-  const pathGit = '/leri'
+  const pathGit = PRODUCTION ? '/leri' : ''
   const pathStatics = `${pathGit}/statics`
   // const phone = { link: 'tel:', mask: '' }
   // const mail = { link: 'mailto:', mask: '' }
@@ -12,7 +12,7 @@
 
   const pages = [
     { view: 'index', link: PRODUCTION ? '/' : 'index.html', property: 1, style: 'home' },
-    { view: '404', link: '/404.html', property: false, style: 'info' },
+    { view: '404', link: '/404.html', property: false, style: 'err404' },
   ]
 
   function getPage (view) {
