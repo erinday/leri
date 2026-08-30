@@ -1,7 +1,7 @@
 -
-  const pathStatics = '/statics'
+  const pathGit = '/leri'
+  const pathStatics = `${pathGit}/statics`
   // const phone = { link: 'tel:', mask: '' }
-  // const phoneOther = { link: 'tel:', mask: '' }
   // const mail = { link: 'mailto:', mask: '' }
 
   // const socials = {
@@ -17,6 +17,12 @@
 
   function getPage (view) {
     return pages.find(page => page.view === view)
+  }
+
+  function getLink (view) {
+    const page = getPage(view)
+    if (!page) return '#'
+    return `${pathGit}/${page.link}`
   }
 
   function prefetchStyle () {
