@@ -1,8 +1,9 @@
 const production = process.env.NODE_ENV === 'production'
+const hash = `${Date.now()}`.substring(0, 8)
 
-module.exports = {
+export default {
   production,
+  hash,
   outputFolder: production ? 'dist' : 'dev',
   url: '',
-  domain: ''
 }

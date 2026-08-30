@@ -1,11 +1,11 @@
-const { series, src, dest } = require('gulp')
-const env = require('./env')
+import { src, dest, series } from 'gulp'
+import env from './env.js'
 
 function fonts () {
   return src('assets/fonts/*.*', { encoding: false })
-    .pipe(dest(`${env.outputFolder}/statics/fonts`))
+  .pipe(dest(`${env.outputFolder}/statics/fonts`))
 }
 
-module.exports = {
+export default {
   build: series(fonts)
 }

@@ -1,14 +1,14 @@
-// npm i -D gulp-pug gulp-data gulp-plumber gulp-typograf gulp-rename gulp-htmlmin
-const { src, dest, series } = require('gulp')
-const pug = require('gulp-pug')
-const data = require("gulp-data")
-const plumber = require('gulp-plumber')
-const typograf = require('gulp-typograf')
-const htmlmin = require('gulp-htmlmin')
-const rename = require('gulp-rename')
+// npm -D gulp-pug gulp-data gulp-plumber gulp-typograf gulp-htmlmin gulp-rename
+import { src, dest, series } from 'gulp'
+import pug from 'gulp-pug'
+import data from 'gulp-data'
+import plumber from 'gulp-plumber'
+import typograf from 'gulp-typograf'
+import htmlmin from 'gulp-htmlmin'
+import rename from 'gulp-rename'
 
-const env = require('./env')
-const { browserSync } = require('./browserSync')
+import env from './env.js'
+import { BS } from './browserSync.js'
 
 const path = {
   pages: 'assets/views/pages/**/*.pug',
@@ -34,13 +34,14 @@ const htmlminConfig = {
 
 function dataView (file) {
   return {
-    PRODUCTION: env.production,
     VIEW: file.stem,
+    PRODUCTION: env.production,
+    HASH: env.hash,
     URL: env.url,
   }
 }
 
-function views () {
+function view () {
   if (env.production) {
     return src(path.pages, { ignore: [path.siteMap] })
     .pipe(plumber())
@@ -53,10 +54,10 @@ function views () {
   return src(path.pages)
   .pipe(plumber())
   .pipe(data(dataView))
-  .pipe(pug({ pretty: true }))
+  .pipe(pug())
   .pipe(typograf(typografConfig))
   .pipe(dest(env.outputFolder))
-  .on('end', () => browserSync.reload())
+  .on('end', BS.reload)
 }
 
 function sitemap () {
@@ -71,8 +72,7 @@ function sitemap () {
   .pipe(dest(env.outputFolder))
 }
 
-module.exports = {
-  build: env.production ? series(views, sitemap) : series(views),
+export default {
+  build: env.production ? series(view, sitemap): series(view),
   path
 }
-

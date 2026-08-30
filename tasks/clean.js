@@ -1,11 +1,12 @@
 // npm i -D del
-const { deleteAsync } = require('del')
-const env = require('./env')
+
+import { deleteAsync } from 'del'
+import env from './env.js'
 
 function clean () {
   return deleteAsync(env.outputFolder)
 }
 
-module.exports = {
-  all: clean,
+export default {
+  all: clean
 }

@@ -2,15 +2,14 @@
   "name": "leri",
   "version": "1.0.0",
   "description": "",
+  "author": "",
+  "license": "ISC",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "gulp",
     "build": "cross-env NODE_ENV=production gulp build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "browser-sync": "^3.0.4",
     "cross-env": "^10.1.0",
@@ -25,8 +24,6 @@
     "gulp-plumber": "^1.2.1",
     "gulp-pug": "^5.0.0",
     "gulp-rename": "^2.1.0",
-    "gulp-rev-all": "^5.1.0",
-    "gulp-rev-delete-original": "^0.2.3",
     "gulp-sass": "^6.0.1",
     "gulp-svgmin": "^4.1.0",
     "gulp-typograf": "^4.1.0",

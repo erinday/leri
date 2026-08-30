@@ -1,44 +1,41 @@
+// yarn add cross-env
+// yarn add -D gulp
 'use strict'
-// npm i -D gulp cross-env
 
-const gulp = require('gulp')
-const clean = require('./tasks/clean')
+import gulp from 'gulp'
+import clean from './tasks/clean.js'
+import fonts from './tasks/fonts.js'
+import views from './tasks/views.js'
+import styles from './tasks/styles.js'
+// import scripts from './tasks/scripts.js'
+import images from './tasks/images.js'
 // const copy = require('./tasks/copy')
-const font = require('./tasks/fonts')
-const view = require('./tasks/views')
-const style = require('./tasks/styles')
-// const script = require('./tasks/script')
-const img = require('./tasks/images')
-const hashing = require('./tasks/hashing')
-const { runServe } = require('./tasks/browserSync')
+import { runServe } from './tasks/browserSync.js'
 
 gulp.task('watch', () => {
-  gulp.watch(view.path.watch, gulp.series(view.build))
-  gulp.watch(style.watch, gulp.series(style.build))
-//   gulp.watch(script.path.watch, gulp.series(script.build))
-  gulp.watch(img.path.watch, gulp.series(img.build))
+  gulp.watch(views.path.watch, gulp.series(views.build))
+  gulp.watch(styles.path.watch, gulp.series(styles.build))
+  // gulp.watch(scripts.path.watch, gulp.series(scripts.build))
+  gulp.watch(images.path.watch, gulp.series(images.build))
 })
 
-gulp.task('build:dev', gulp.series(
+gulp.task('dev', gulp.series(
   clean.all,
-  font.build,
-  style.build,
-//   script.build,
-  img.build,
-  view.build
+  fonts.build,
+  styles.build,
+  // scripts.build,
+  images.build,
+  views.build,
 ))
 
 gulp.task('build', gulp.series(
   clean.all,
-//   copy.other,
-  font.build,
-  style.build,
-//   script.build,
-  img.build,
-  view.build,
-  hashing.build
+  fonts.build,
+  styles.build,
+  // scripts.build,
+  images.build,
+  // copy.build,
+  views.build
 ))
 
-gulp.task('default', gulp.series(
-  'build:dev', gulp.parallel('watch', runServe)
-))
+gulp.task('default', gulp.series('dev', gulp.parallel('watch', runServe)))

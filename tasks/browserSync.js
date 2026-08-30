@@ -1,17 +1,14 @@
 // npm i -D browser-sync
-const browserSync = require('browser-sync').create()
-const env = require('./env')
 
-function runServe () {
-  browserSync.init({
+import browserSync from 'browser-sync'
+
+export const BS = browserSync.create()
+
+export function runServe () {
+  BS.init({
     server: {
-      baseDir: env.outputFolder,
+      baseDir: 'dev',
       index: "_site-map.html"
     }
   })
-}
-
-module.exports = {
-  runServe,
-  browserSync
 }

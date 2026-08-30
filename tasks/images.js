@@ -1,37 +1,38 @@
 // npm i -D gulp-newer gulp-svgmin
-const { src, dest, series } = require('gulp')
-const newer = require('gulp-newer')
-const svgmin = require('gulp-svgmin')
 
-const env = require('./env')
-const { browserSync } = require('./browserSync')
+import { src, dest, series } from 'gulp'
+import newer from 'gulp-newer'
+import svgmin from 'gulp-svgmin'
+import env from './env.js'
+import { BS } from './browserSync.js'
+
 const path = {
   svg: 'assets/images/**/*.svg',
-  favicon: 'assets/images/favicon/favicon.ico',
   other: 'assets/images/**/*.{png,jpg,ico,webp}',
-  watch: 'assets/images/**/*.{png,jpg,svg,ico,webp}'
+  watch: 'assets/images/**/*.{png,jpg,svg,ico,webp}',
+  favicon: 'assets/images/favicon/favicon.ico'
 }
 
 function img () {
   return src(path.other, { encoding: false })
-  .pipe(newer(`${env.outputFolder}/statics/img`))
-  .pipe(dest(`${env.outputFolder}/statics/img`))
+    .pipe(newer(`${env.outputFolder}/statics/img`))
+    .pipe(dest(`${env.outputFolder}/statics/img`))
 }
 
 function svg () {
-  return src(path.svg)
-  .pipe(newer(`${env.outputFolder}/statics/img`))
-  .pipe(svgmin())
-  .pipe(dest(`${env.outputFolder}/statics/img`))
+  return src(path.svg, { encoding: false })
+    .pipe(newer(`${env.outputFolder}/statics/img`))
+    .pipe(svgmin())
+    .pipe(dest(`${env.outputFolder}/statics/img`))
 }
 
 function favicon () {
   return src(path.favicon, { encoding: false })
-  .pipe(dest(`${env.outputFolder}/`))
-  .on('end', browserSync.reload)
+    .pipe(dest(`${env.outputFolder}/`))
+    .on('end', BS.reload)
 }
 
-module.exports = {
+export default {
   build: series(img, svg, favicon),
   path
 }

@@ -20,4 +20,4 @@ html(lang='ru' prefix="og: https://ogp.me/ns#")
     include footer
     //include scripts
     each style in prefetchStyle()
-      link(rel="prefetch", href=`${pathStatics}/css/${style}.css`, as="style")
+      link(rel="prefetch", href=`${pathStatics}/styles/${style}${PRODUCTION ? `-${HASH}` : ''}.css`, as="style")
