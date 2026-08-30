@@ -1,3 +1,9 @@
 footer.footer
-  .footer__cont
-    | aesthetics
+  .footer__wrap
+    .footer__cont
+      if VIEW !== 'index'
+        a.footer__logo(href=getLink('index'))
+          img.footer__logo-img(src=staticImg('logo-white.webp'), loading="lazy", alt="Logo")
+      else
+        .footer__logo
+          img.footer__logo-img(src=staticImg('logo-white.webp'), loading="lazy", alt="Logo")

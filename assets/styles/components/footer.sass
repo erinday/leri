@@ -1,0 +1,34 @@
+@use "../v"
+
+.footer
+  display: flex
+  flex-direction: column
+  overflow: hidden
+  min-height: 100vh
+  &::after
+    content: "aesthetics"
+    display: block
+    background-image: linear-gradient(#fa2302 0%, #ff995e 60%, #ffc9a6 100%)
+    padding-top: 40px
+    +v.ff-CormorantUpright()
+    text-transform: uppercase
+    text-align: center
+    font-size: 17.3vw
+    line-height: 11vw
+    pointer-events: none
+    color: v.c(#ff1900, .1)
+
+.footer__wrap
+  flex-grow: 1
+  background-image: linear-gradient(#0a0807 0% 60%, #790102 80%, #e80201 90%, #fa2302 100%)
+
+.footer__cont
+  +v.cont
+  padding-top: 40px
+
+.footer__logo
+  display: block
+
+.footer__logo
+  width: 110px
+  height: 73px

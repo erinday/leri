@@ -1,0 +1,9 @@
+@use 'mixins'
+
+@mixin cont ()
+  margin: 0 auto
+  padding-left: 20px
+  padding-right: 20px
+  @include mixins.media(1240)
+    padding-left: 16px
+    padding-right: 16px
