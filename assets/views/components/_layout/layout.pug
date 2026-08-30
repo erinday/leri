@@ -1,0 +1,23 @@
+include ../../_variables
+include _connect-style
+include _title
+//include _description
+//include _keywords
+//include _image
+//include _link
+
+doctype html
+html(lang='ru' prefix="og: https://ogp.me/ns#")
+  head
+    include _head
+    block head
+  body
+    //include header
+    //block header
+    //  +header
+    main.wrapper
+      block body
+    //include footer
+    //include scripts
+    each style in prefetchStyle()
+      link(rel="prefetch", href=`${pathStatics}/css/${style}.css`, as="style")

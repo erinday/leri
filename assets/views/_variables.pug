@@ -1,0 +1,36 @@
+-
+  const pathStatics = '/statics'
+  // const phone = { link: 'tel:', mask: '' }
+  // const phoneOther = { link: 'tel:', mask: '' }
+  // const mail = { link: 'mailto:', mask: '' }
+
+  // const socials = {
+  //   vk: { name: 'vk', link: '#' },
+  //   in: { name: 'in', link: '#' },
+  //   yt: { name: 'yt', link: '#' },
+  // }
+
+  const pages = [
+    { view: 'index', link: PRODUCTION ? '/' : 'index.html', property: 1, style: 'home' },
+    // { view: '404', link: '/404.html', property: false, style: 'info' },
+  ]
+
+  function getPage (view) {
+    return pages.find(page => page.view === view)
+  }
+
+  function prefetchStyle () {
+    const style = []
+    const currentPage = getPage(VIEW)
+    pages.forEach(page => {
+      if (page.view === currentPage.view) return
+      if (page.style && page.style === currentPage.style) return
+      if (!page.style) return style.push(page.view)
+      if (!style.includes(page.style)) style.push(page.style)
+    })
+    return style
+  }
+
+  function staticImg (image) {
+    return `${pathStatics}/img/${image}`
+  }
