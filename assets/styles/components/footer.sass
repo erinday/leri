@@ -24,11 +24,49 @@
 
 .footer__cont
   +v.cont
+  display: flex
   padding-top: 46px
+  @include v.media(950)
+    display: block
+    padding-top: 36px
 
 .footer__logo
   display: block
+  @include v.media(950)
+    margin-bottom: 32px
 
-.footer__logo
+.footer__logo-img
   width: 110px
   height: 73px
+  @include v.media(950)
+    width: 55px
+    height: 37px
+
+.footer__area
+  display: flex
+  flex-wrap: wrap
+  gap: 64px
+  margin-left: 200px
+  @include v.media(950)
+    margin-left: 0
+
+//.footer__box
+
+.footer__title
+  display: block
+  margin-bottom: 8px
+  +v.fz12-16()
+  text-transform: uppercase
+  color: v.c(#ffffff, .35)
+
+.footer__list
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+.footer__item
+  display: inline-block
+  vertical-align: top
+  text-decoration: none
+  +v.fz12-16()
+  color: v.c(#ffffff)

@@ -1,3 +1,26 @@
+-
+  const footerMenu = [
+    {
+      title: 'my work',
+      list: [
+        { link: '#', name: 'tasktype' },
+        { link: '#', name: 'the resale market' },
+        { link: '#', name: 'fire duck' },
+        { link: '#', name: 'ah365' },
+        { link: '#', name: 'schiaparelli' },
+        { link: '#', name: 'movie night' },
+      ]
+    },
+    {
+      title: 'about me',
+      list: [
+        { link: '#', name: 'my position' },
+        { link: '#', name: 'experience' },
+        { link: '#', name: 'works' },
+      ]
+    }
+  ]
+
 footer.footer
   .footer__wrap
     .footer__cont
@@ -7,3 +30,15 @@ footer.footer
       else
         .footer__logo
           img.footer__logo-img(src=staticImg('logo-white.webp'), loading="lazy", alt="Logo")
+      .footer__area
+        each menu in footerMenu
+          .footer__box
+            span.footer__title= menu.title
+            .footer__list
+              each link in menu.list
+                a.footer__item(href="#")= link.name
+        .footer__box
+          span.footer__title Contact with me
+          .footer__list
+            a.footer__item(href=mail1.link, target="_blank" rel="noopener")= mail1.mask
+            a.footer__item(href=mail2.link, target="_blank" rel="noopener")= mail2.mask

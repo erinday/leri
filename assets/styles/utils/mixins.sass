@@ -34,3 +34,9 @@ $imgPath: '../img/'
 @mixin ff-CormorantUpright
   font-family: 'Cormorant Upright', sans-serif
   font-weight: 400
+
+@mixin fz12-16 ($weight: false)
+  font-size: 12px
+  @if ($weight)
+    font-weight: $weight
+  line-height: 16px
