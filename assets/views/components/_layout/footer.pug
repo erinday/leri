@@ -1,5 +1,5 @@
 -
-  const footerMenuProjects = [
+  const footerMenuWorks = [
     { link: '#', name: 'tasktype' },
     { link: '#', name: 'the resale market' },
     { link: '#', name: 'fire duck' },
@@ -27,7 +27,7 @@ footer.footer
         .footer__box.footer__box_works
           span.footer__title my work
           .footer__list
-            each link, index in footerMenuProjects
+            each link, index in footerMenuWorks
               .footer__item
                 span.footer__item-numb= index + 1 < 10 ? `0${index + 1}`:index + 1
                 a.footer__item-link(href="#")= link.name
