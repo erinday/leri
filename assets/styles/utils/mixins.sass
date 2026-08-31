@@ -35,6 +35,12 @@ $imgPath: '../img/'
   font-family: 'Cormorant Upright', sans-serif
   font-weight: 400
 
+@mixin fz10-14 ($weight: false)
+  font-size: 10px
+  @if ($weight)
+    font-weight: $weight
+  line-height: 14px
+
 @mixin fz12-16 ($weight: false)
   font-size: 12px
   @if ($weight)

@@ -1,24 +1,17 @@
 -
-  const footerMenu = [
-    {
-      title: 'my work',
-      list: [
-        { link: '#', name: 'tasktype' },
-        { link: '#', name: 'the resale market' },
-        { link: '#', name: 'fire duck' },
-        { link: '#', name: 'ah365' },
-        { link: '#', name: 'schiaparelli' },
-        { link: '#', name: 'movie night' },
-      ]
-    },
-    {
-      title: 'about me',
-      list: [
-        { link: '#', name: 'my position' },
-        { link: '#', name: 'experience' },
-        { link: '#', name: 'works' },
-      ]
-    }
+  const footerMenuProjects = [
+    { link: '#', name: 'tasktype' },
+    { link: '#', name: 'the resale market' },
+    { link: '#', name: 'fire duck' },
+    { link: '#', name: 'ah365' },
+    { link: '#', name: 'schiaparelli' },
+    { link: '#', name: 'movie night' },
+  ]
+
+  const footerMenuLinks = [
+    { link: '#', name: 'my position' },
+    { link: '#', name: 'experience' },
+    { link: '#', name: 'works' },
   ]
 
 footer.footer
@@ -31,14 +24,23 @@ footer.footer
         .footer__logo
           img.footer__logo-img(src=staticImg('logo-white.webp'), loading="lazy", alt="Logo")
       .footer__area
-        each menu in footerMenu
-          .footer__box
-            span.footer__title= menu.title
-            .footer__list
-              each link in menu.list
-                a.footer__item(href="#")= link.name
+        .footer__box.footer__box_works
+          span.footer__title my work
+          .footer__list
+            each link, index in footerMenuProjects
+              .footer__item
+                span.footer__item-numb= index + 1 < 10 ? `0${index + 1}`:index + 1
+                a.footer__item-link(href="#")= link.name
+        .footer__box
+          span.footer__title about me
+          .footer__list
+            each link in footerMenuLinks
+              .footer__item
+                a.footer__item-link(href="#")= link.name
         .footer__box
           span.footer__title Contact with me
           .footer__list
-            a.footer__item(href=mail1.link, target="_blank" rel="noopener")= mail1.mask
-            a.footer__item(href=mail2.link, target="_blank" rel="noopener")= mail2.mask
+            .footer__item
+              a.footer__item-link(href=mail1.link, target="_blank" rel="noopener")= mail1.mask
+            .footer__item
+              a.footer__item-link(href=mail2.link, target="_blank" rel="noopener")= mail2.mask

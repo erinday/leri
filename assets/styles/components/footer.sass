@@ -21,6 +21,9 @@
 .footer__wrap
   flex-grow: 1
   background-image: linear-gradient(#0a0807 0% 60%, #790102 80%, #e80201 90%, #fa2302 100%)
+  padding-bottom: 120px
+  @include v.media(950)
+    padding-bottom: 30px
 
 .footer__cont
   +v.cont
@@ -52,9 +55,13 @@
 
 //.footer__box
 
+.footer__box_works
+  @include v.media(950)
+    margin-left: 30px
+
 .footer__title
   display: block
-  margin-bottom: 8px
+  margin-bottom: 7px
   +v.fz12-16()
   text-transform: uppercase
   color: v.c(#ffffff, .35)
@@ -65,8 +72,28 @@
   align-items: flex-start
 
 .footer__item
+  display: flex
+  align-items: baseline
+  color: v.c(#ffffff)
+  @include v.hover
+    transition: color .2s
+  &:hover
+    @include v.hover
+      color: v.c(#ff1900)
+      transition-duration: .1s
+
+.footer__item-numb
   display: inline-block
   vertical-align: top
-  text-decoration: none
+  margin-right: 12px
+  margin-left: -30px
+  min-width: 18px
+  text-align: right
+  +v.fz10-14()
+  color: v.c(#ffffff, .35)
+
+.footer__item-link
+  display: inline-block
+  vertical-align: top
   +v.fz12-16()
-  color: v.c(#ffffff)
+  text-decoration: none
